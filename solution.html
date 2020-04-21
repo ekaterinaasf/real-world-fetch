@@ -25,7 +25,7 @@
       const form = document.querySelector("form");
       const output = document.querySelector("output");
 
-      form.addEventListener("submit", event => {
+      form.addEventListener("submit", (event) => {
         // stop the form submitting and reloading the page
         event.preventDefault();
 
@@ -38,12 +38,12 @@
 
         // request that pokemon from PokeAPI
         fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-          .then(response => {
+          .then((response) => {
             if (!response.ok) throw new Error(response.status);
             return response.json();
           })
           // if we get a successful response
-          .then(pokemonData => {
+          .then((pokemonData) => {
             const heading = document.createElement("h2");
             heading.textContent = pokemonData.name;
             const image = document.createElement("img");
@@ -54,7 +54,7 @@
             output.appendChild(image);
           })
           // if the request is unsuccessful
-          .catch(error => {
+          .catch((error) => {
             console.log(error);
             if (error.message === "404") {
               output.textContent = `⚠️ Couldn't find "${name}"`;
